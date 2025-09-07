@@ -24,16 +24,14 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
-          cache: npm
+          node-version: 20   # <-- no "cache" here
 
       - name: Install
-        run: npm ci || npm i
+        run: npm i          # <-- don't use npm ci (needs a lockfile)
 
       - name: Build
         run: npm run build
 
-      # Required for GitHub Pages
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
